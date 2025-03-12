@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo ao PetLar</title>
+</head>
+<body>
+<div th:insert="~{layout.html :: content}">
+    <h1 class="text-center mt-5" th:text="#{app.welcome}"></h1>
+    <p class="text-center" th:text="#{app.find_friends}"></p>
+    <div class="text-center">
+        <a href="/pets" class="btn btn-primary" th:text="#{app.see_pets}"></a>
+    </div>
+
+</div>
+</body>
+</html>

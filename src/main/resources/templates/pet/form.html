@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pet</title>
+</head>
+<body>
+<div th:insert="~{layout.html :: content}">
+    <h1 class="text-center" th:text="${pet.id == null} ? 'Cadastrar Novo Pet' : 'Editar Pet'"></h1>
+
+    <form th:action="@{/pets/{id}(id=${pet.id})}" th:object="${pet}" method="post">
+        <div class="mb-3">
+            <label class="form-label">Nome do Pet:</label>
+            <input type="text" class="form-control" th:field="*{nome}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tipo do Pet:</label>
+            <input type="text" class="form-control" th:field="*{tipo}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Data de Nascimento:</label>
+            <input type="date" class="form-control" th:field="*{dataNascimento}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Valor para Adoção:</label>
+            <input type="number" class="form-control" th:field="*{valorAdocao}" step="0.01" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Telefone do Dono:</label>
+            <input type="text" class="form-control" th:field="*{telefoneDono}" placeholder="(XX) XXXX-XXXX ou (XX) XXXXX-XXXX" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="/pets" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

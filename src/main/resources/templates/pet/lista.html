@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pets</title>
+</head>
+<body>
+<div th:insert="~{layout.html :: content}">
+    <!DOCTYPE html>
+    <html lang="pt" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de Pets</title>
+    </head>
+    <body>
+    <div th:insert="~{layout.html :: content}">
+        <h1 class="text-center" th:text="#{pets.list.title}"></h1>
+
+        <table class="table table-striped mt-4">
+            <thead>
+            <tr>
+                <th th:text="#{pets.list.id}"></th>
+                <th th:text="#{pets.list.name}"></th>
+                <th th:text="#{pets.list.type}"></th>
+                <th th:text="#{pets.list.birth}"></th>
+                <th th:text="#{pets.list.price}"></th>
+                <th th:text="#{pets.list.phone}"></th>
+                <th th:text="#{pets.list.actions}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pet : ${pets}">
+                <td th:text="${pet.id}"></td>
+                <td th:text="${pet.nome}"></td>
+                <td th:text="${pet.tipo}"></td>
+                <td th:text="${pet.dataNascimento}"></td>
+                <td th:text="${pet.valorAdocao}"></td>
+                <td th:text="${pet.telefoneDono}"></td>
+                <td>
+                    <a th:href="@{/pets/editar/{id}(id=${pet.id})}" class="btn btn-warning btn-sm" th:text="#{pets.list.edit}"></a>
+                    <a th:href="@{/pets/deletar/{id}(id=${pet.id})}" class="btn btn-danger btn-sm" th:text="#{pets.list.delete}"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="/pets/novo" class="btn btn-success" th:text="#{pets.list.new}"></a>
+    </div>
+    </body>
+    </html>
+
+</div>
+</body>
+</html>
